@@ -44,3 +44,7 @@ If port 5000 is already in use on your machine, the app will automatically start
 - Compares extension vs detected type
 - If mismatch → **Suspicious file detected**
 
+
+Output:
+
+<img width="802" height="705" alt="2-file-type-analyzer" src="https://github.com/user-attachments/assets/24697093-a3f3-4f3c-a7c8-b26d4fd6d55d" />
