@@ -186,17 +186,18 @@ def analyze():
 
 if __name__ == "__main__":
     import socket
+    import os
 
     def pick_port(preferred: int) -> int:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             try:
-                s.bind(("127.0.0.1", preferred))
+                s.bind(("0.0.0.0", preferred))   
                 return preferred
             except OSError:
                 return 5001 if preferred == 5000 else preferred
 
-    port = int(os.environ.get("PORT", "5000"))
+    port = int(os.environ.get("PORT", "10000"))  
     port = pick_port(port)
-    app.run(host="127.0.0.1", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port)
 
