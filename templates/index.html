@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>File Type Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="card">
+        <header class="header">
+          <h1>File Type Analyzer</h1>
+          <p class="subtitle">
+            Upload a file to compare its extension with its real (magic number) type.
+          </p>
+        </header>
+
+        <div class="form">
+          <label class="file-label" for="fileInput">
+            <span>Select a file</span>
+            <input id="fileInput" type="file" />
+          </label>
+
+          <button id="analyzeBtn" class="btn" type="button">
+            Analyze File
+          </button>
+
+          <div id="hint" class="hint" aria-live="polite"></div>
+        </div>
+
+        <section id="result" class="result hidden" aria-live="polite">
+          <div class="status-row">
+            <div id="statusBadge" class="badge">Status</div>
+            <div id="statusText" class="status-text"></div>
+          </div>
+
+          <div class="grid">
+            <div class="row">
+              <div class="label">File Name</div>
+              <div id="fileName" class="value monospace"></div>
+            </div>
+            <div class="row">
+              <div class="label">Extension</div>
+              <div id="extension" class="value monospace"></div>
+            </div>
+            <div class="row">
+              <div class="label">Expected Extension(s)</div>
+              <div id="expectedExtensions" class="value monospace"></div>
+            </div>
+            <div class="row">
+              <div class="label">Actual Type</div>
+              <div id="actualType" class="value"></div>
+            </div>
+            <div class="row">
+              <div class="label">File Size</div>
+              <div id="fileSize" class="value"></div>
+            </div>
+            <div class="row">
+              <div class="label">MD5</div>
+              <div id="md5" class="value monospace"></div>
+            </div>
+            <div class="row">
+              <div class="label">SHA256</div>
+              <div id="sha256" class="value monospace"></div>
+            </div>
+          </div>
+
+          <details class="details">
+            <summary>Advanced details</summary>
+            <div class="advanced">
+              <div class="row">
+                <div class="label">Signature (hex)</div>
+                <div id="signatureHex" class="value monospace"></div>
+              </div>
+            </div>
+          </details>
+        </section>
+      </section>
+
+      <footer class="footer">
+        <p>
+          Backend: Flask • Detection: magic number signatures • Hashes: MD5 + SHA256
+        </p>
+      </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
+
